@@ -1,5 +1,4 @@
 Variable Name,Question Text,Responses,Other Notes
-_STATE,What state are you in,,
 DIABETE4,Has a doctor ever told you you you have diabetes?,"1 - Yes, 2- Yes but feamled told only during pregnancy, 3 - No, 4 - No, prediabetes or borderline diabetes, 7 - Dont know/not sure, 9 - Refused",TARGET VARIABLE
 _BMI5,calculated BMI from provided height and weight,,
 SMOKE100,Have you smoked at least 100 cigarettes in your entire life?,"1- Yes, 2 - No, 7 - Don't Know/Not Sure, 9 - Refused",
