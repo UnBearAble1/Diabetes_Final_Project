@@ -1,6 +1,6 @@
 -- Creating tables
 CREATE TABLE filtered_bmi_df (
-  Diabetes_Status VARCHAR(50) PRIMARY KEY NOT NULL,
+  Diabetes_Status VARCHAR(50),
   Ethnicity VARCHAR(50),
   High_Cholesterol VARCHAR(50),
   High_Blood_Pressure VARCHAR(50),
@@ -20,7 +20,7 @@ CREATE TABLE filtered_bmi_df (
 
 -- Create table for visualization
 CREATE TABLE visualization_df (
-  Diabetes_Status VARCHAR(50) PRIMARY KEY NOT NULL,
+  Diabetes_Status VARCHAR(50),
   Ethnicity VARCHAR(50), 
   BMI FLOAT, 
   Age_Group VARCHAR(50), 
