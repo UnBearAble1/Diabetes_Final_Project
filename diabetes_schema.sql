@@ -21,8 +21,11 @@ CREATE TABLE filtered_bmi_df (
 -- Create table for visualization
 CREATE TABLE visualization_df (
   Diabetes_Status VARCHAR(50),
-  Ethnicity VARCHAR(50), 
-  BMI FLOAT, 
+  Ethnicity VARCHAR(50),
+  High_Cholesterol VARCHAR(50),
+  High_Blood_Pressure VARCHAR(50), 
+  BMI FLOAT,
+  Smoked_Cigarettes VARCHAR(50),
   Age_Group VARCHAR(50), 
   Income VARCHAR(50), 
   Gender VARCHAR(50)
