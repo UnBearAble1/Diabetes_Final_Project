@@ -28,26 +28,47 @@ Below are a list of questions we hope to answer through our analysis. By answeri
 ## Data Exploration 
 
 ### Data Extraction
-The first challenge with teh data was converting it from the file type .xpt into .csv so it could be used with PySpark and the tools on AWS. This was ahcieved by reading the file in with the command
+The first challenge with teh data was converting it from the file type .xpt into .csv so it could be used with PySpark and the tools on AWS. This was ahcieved by reading the file into a pandas DataFrame with the command
 
-``` df = pandas.read_sas('filename.XPT') ```
-and then writnig the DataFrame as a CSV with
+``` df = pandas.read_sas('<filename>.XPT') 
+```
+and then writing the DataFrame as a CSV with
 
-### Data Cleaning
-The first step to exploring our data was to clean the data. All cells in our dataset had a number in them. The numbers were not unique and had different meanings for each question/column. To run machine learning properly, we needed to replace the values based on the responses provided in the survey key. For particiapnts who answered questions as "unknown" or "refused", we set these values to show Nan. After converting all of our values, we dropped all rows that had an na value in it. 
+``` df.to_csv('<filename>.csv')
+```
 
-Our next step was to look for any outliers that could skew our data. It was determined that the BMI column could include significant outliers so we removed these. 
+The file was then uploaded into Amazon S3 and loaded into a Google Collab Notebook using Pyspark.
 
-Lastly, we renamed our columns to better identify the data. 
+### Data Transformation
 
-### Upload and Store Data 
-Using SQL, we created our diabetes schema to determine what tables / dataframes we wanted. 
+Using the columns identified above, we then narrowed the data down to run the analysis and began work with the following Pyspark DataFrame
+
+
+Since the data was collected through a survey, the responses were written in a numeric code so that the survey responses could be quickly recorded. To transform the data, we converted the Pyspark DataFrames into pandas DataFrames, then used the rubric provided in https://www.cdc.gov/brfss/annual_data/2021/pdf/2021-calculated-variables-version4-508.pdf and a combination of ```df =df.replace``` and ```df = np.where(df["<COULUMN>"].between(<RANGE>), "<REPLACEMENT-VALUE>", df["<COLUMN>"]) to get the respsones to the appropriate value or into its corresponding bucket.
+
+Respondants were also allowed to refuse to answer or respond that they could not recall, both responses which were recored as null and then converted in NAs responses using ```df=df.mask(pandas_df == "")```. Once the data was converted accordingly, all NA values were dropped using ```df=df.drop(na)```
+
+We next looked for outliers in the BMI starting with getting the summary statistics for BMI which provided the following:
+
+LINK TO IMAGE
+
+We then defined the first quartile, third quartile and IQR and filtered the data with the following:
+```filtered_bmi_df = pandas_df.loc[(pandas_df["_BMI5"] > (bmi_q1 - (1.5 * bmi_iqr))) & (pandas_df["_BMI5"] < (bmi_q3 + (1.5 * bmi_iqr)))]```
+
+Rerunning the summary statistics showed about 8,000 outliers removed and provided the following:
+
+LINK to image
+
+We next separated out the key indicators for our visulaization into a spearate table, which was informed by the machine learning that will be reivewed below. Inour last step, we renamed the columns to be more user friendly.
+
+### Data Loading
+To load our data, we created a server in PostGres connected to an Amazon Relational Database with the followng schema for our machine learning data and our visualization data
 
 ![image](https://user-images.githubusercontent.com/117782103/233792933-f24e51d0-3e0a-4037-8671-ff0d98343c4f.png)
 
-From this we created two dataframes - one with all columns and one with the columns that we wanted to visualize. Our results of our machine learning will determine what columns we want in our visualization dataframe. Both dataframes were converted to pyspark and loaded into AWS. 
+Then in our google collab, we converted the data for our machine learning and our visualization data back into Pyspark DataFrames and used the following to load the data:
 
-We then stored environmental variables and configured our settings for the RDS so we could load our data into Postgres. We used the connection string in PgAdmin to load our data.
+IMAGE
 
 ### Machine Learning 
 The next step in exploring our data was to run our machine learning model. To prepare our data to run through the machine learning model, the following steps were taken: 
