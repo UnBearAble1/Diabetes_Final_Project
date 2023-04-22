@@ -30,12 +30,11 @@ Below are a list of questions we hope to answer through our analysis. By answeri
 ### Data Extraction
 The first challenge with teh data was converting it from the file type .xpt into .csv so it could be used with PySpark and the tools on AWS. This was ahcieved by reading the file into a pandas DataFrame with the command
 
-``` df = pandas.read_sas('<filename>.XPT') 
-```
+```df = pandas.read_sas('<filename>.XPT')```
+
 and then writing the DataFrame as a CSV with
 
-``` df.to_csv('<filename>.csv')
-```
+```df.to_csv('<filename>.csv')```
 
 The file was then uploaded into Amazon S3 and loaded into a Google Collab Notebook using Pyspark.
 
@@ -43,6 +42,7 @@ The file was then uploaded into Amazon S3 and loaded into a Google Collab Notebo
 
 Using the columns identified above, we then narrowed the data down to run the analysis and began work with the following Pyspark DataFrame
 
+![image]https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/Initial_Data_Set.png
 
 Since the data was collected through a survey, the responses were written in a numeric code so that the survey responses could be quickly recorded. To transform the data, we converted the Pyspark DataFrames into pandas DataFrames, then used the rubric provided in https://www.cdc.gov/brfss/annual_data/2021/pdf/2021-calculated-variables-version4-508.pdf and a combination of ```df =df.replace``` and ```df = np.where(df["<COULUMN>"].between(<RANGE>), "<REPLACEMENT-VALUE>", df["<COLUMN>"]) to get the respsones to the appropriate value or into its corresponding bucket.
 
@@ -50,14 +50,14 @@ Respondants were also allowed to refuse to answer or respond that they could not
 
 We next looked for outliers in the BMI starting with getting the summary statistics for BMI which provided the following:
 
-LINK TO IMAGE
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/BMI_pre_outliers.png)
 
 We then defined the first quartile, third quartile and IQR and filtered the data with the following:
 ```filtered_bmi_df = pandas_df.loc[(pandas_df["_BMI5"] > (bmi_q1 - (1.5 * bmi_iqr))) & (pandas_df["_BMI5"] < (bmi_q3 + (1.5 * bmi_iqr)))]```
 
 Rerunning the summary statistics showed about 8,000 outliers removed and provided the following:
 
-LINK to image
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/BMI_post_outliers.png)
 
 We next separated out the key indicators for our visulaization into a spearate table, which was informed by the machine learning that will be reivewed below. Inour last step, we renamed the columns to be more user friendly.
 
@@ -68,7 +68,7 @@ To load our data, we created a server in PostGres connected to an Amazon Relatio
 
 Then in our google collab, we converted the data for our machine learning and our visualization data back into Pyspark DataFrames and used the following to load the data:
 
-IMAGE
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/PySpark%20Upload.png)
 
 ### Machine Learning 
 The next step in exploring our data was to run our machine learning model. To prepare our data to run through the machine learning model, the following steps were taken: 
