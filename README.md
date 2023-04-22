@@ -42,3 +42,21 @@ Using SQL, we created our diabetes schema to determine what tables / dataframes 
 From this we created two dataframes - one with all columns and one with the columns that we wanted to visualize. Our results of our machine learning will determine what columns we want in our visualization dataframe. Both dataframes were converted to pyspark and loaded into AWS. 
 
 We then stored environmental variables and configured our settings for the RDS so we could load our data into Postgres. We used the connection string in PgAdmin to load our data.
+
+### Machine Learning 
+The next step in exploring our data was to run our machine learning model. To prepare our data to run through the machine learning model, the following steps were taken: 
+- Load dataframe and determine types of each column 
+- Create a list of those columns that are categorical 
+- Create a one hot encoder instance and fit and transform the data of the categorical columns
+- Merge the dataframe of the one hot encoded features and drop the originals 
+- Define our target (diabetes) and our features (all other columns)
+- Split into training and testing datasets 
+- Fit and scale the data 
+
+Now our data is ready for machine learning. 
+
+#### RandomForest 
+Our original goal was to perform a Random Forest Classifier so we could produce the factors of diabetes and rank these factors by importance. Below were the steps taken to run the machine learning model. We fit the model with random forest classifier, made predictions with the testing data and evaluated the results. 
+
+
+
