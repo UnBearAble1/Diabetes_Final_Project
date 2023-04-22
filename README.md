@@ -30,11 +30,8 @@ Below are a list of questions we hope to answer through our analysis. By answeri
 ### Data Extraction
 The first challenge with teh data was converting it from the file type .xpt into .csv so it could be used with PySpark and the tools on AWS. This was ahcieved by reading the file in with the command
 
-```
-var add2 = function(number) {
-  return number + 2;
-}
-```
+``` df = pandas.read_sas('filename.XPT') ```
+and then writnig the DataFrame as a CSV with
 
 ### Data Cleaning
 The first step to exploring our data was to clean the data. All cells in our dataset had a number in them. The numbers were not unique and had different meanings for each question/column. To run machine learning properly, we needed to replace the values based on the responses provided in the survey key. For particiapnts who answered questions as "unknown" or "refused", we set these values to show Nan. After converting all of our values, we dropped all rows that had an na value in it. 
