@@ -42,7 +42,7 @@ The file was then uploaded into Amazon S3 and loaded into a Google Collab Notebo
 
 Using the columns identified above, we then narrowed the data down to run the analysis and began work with the following Pyspark DataFrame
 
-![image]https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/Initial_Data_Set.png
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/Initial_Data_Set.png)
 
 Since the data was collected through a survey, the responses were written in a numeric code so that the survey responses could be quickly recorded. To transform the data, we converted the Pyspark DataFrames into pandas DataFrames, then used the rubric provided in https://www.cdc.gov/brfss/annual_data/2021/pdf/2021-calculated-variables-version4-508.pdf and a combination of ```df =df.replace``` and ```df = np.where(df["<COULUMN>"].between(<RANGE>), "<REPLACEMENT-VALUE>", df["<COLUMN>"]) to get the respsones to the appropriate value or into its corresponding bucket.
 
