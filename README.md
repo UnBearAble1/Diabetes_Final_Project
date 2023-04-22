@@ -87,27 +87,27 @@ Our original goal was to perform a Random Forest Classifier so we could produce 
 
 Our accuracy score came out at 83%. 
 
-![image](https://user-images.githubusercontent.com/117782103/233793573-4dce1634-93f8-474f-b5c6-054ef1cb2358.png)
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/rf_accuracy.png)
 
 Below is our confusion matrix and classification report. 
 
-![image](https://user-images.githubusercontent.com/117782103/233793608-9ab5e10e-7d4e-487a-8c06-14700c7001b7.png)
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/rf_cm_classification.png)
 
 Laslty we ran our feature importantce and sorted them. 
 
-![image](https://user-images.githubusercontent.com/117782103/233793684-67d98e91-af2c-4f52-b29f-a371a8dd31f8.png)
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/rf_features.png)
 
 With BMI coming in significantly higher than the other features, we ran machine learning logistic regression on only BMI. The accuracy came out the same. 
 
-![image](https://user-images.githubusercontent.com/117782103/233793949-0d01cfc0-8a16-4767-9a6d-5fba3dac4c96.png)
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/BMI_only_accuracy.png)
 
 The last thing we did with the random forest classifier is to go back into our one hot encoder and add drop 'first' to decrease the number of features in our dataset to see if that chnaged the outcome of our factors. When doing this, our accuracy score went up slightly to 83.4%. Below is our confusion matrix and classification report. 
 
-![image](https://user-images.githubusercontent.com/117782103/233794336-59cecde6-c625-40af-8005-e0eb4f24baca.png)
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/drop_first_classification.png)
 
 We ran our feature importance again with BMI still coming out signficantly higher. 
 
-![image](https://user-images.githubusercontent.com/117782103/233794370-bf190475-f6de-4a02-b269-e23306fe9e01.png)
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/drop_first_features.png)
 
 
 #### Logistic Regression 
