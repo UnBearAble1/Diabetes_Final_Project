@@ -18,7 +18,7 @@ The BRFSS dataset has over 300 columns to choose from. We researched the risk fa
 The data columns we chose are related to having been told you have diabetes, race, high cholesterol, high blood pressure, BMI, smoking and alcohol habits, education, general health, age, exercise, healthy eating styles, income, gender and if the cost of healthcare has prohibited you from seeing a doctor. 
 
 ## Questions to Answer 
-Below are a list of questions we hope to answer through our analysis. By answering these questions we can better prepare individuals and the healthcare field for this disease. Early detection of diabetes is key especially with the alarming rate of those who have diabetes or pre-diabetes and do not know it. Since their is no cure currently, the earlier it is detected the earlier lifestyle changes can be made. 
+Below are a list of questions we hope to answer through our analysis. By answering these questions we can better prepare individuals and the healthcare field for this disease. Early detection of diabetes is key especially with the alarming rate of those who have diabetes or pre-diabetes and do not know it. Since there is no cure currently, the earlier it is detected the earlier lifestyle changes can be made. 
 
 - What are the top risk factors of diabetes? 
 - Is prevalence of diabetes higher in certain geographical locations? 
@@ -28,7 +28,7 @@ Below are a list of questions we hope to answer through our analysis. By answeri
 ## Data Exploration 
 
 ### Data Extraction
-The first challenge with the data was converting it from the file type .xpt into .csv so it could be used with PySpark and the tools on AWS. This was ahceived by reading the file into a pandas DataFrame with the command
+The first challenge with the data was converting it from the file type .xpt into .csv so it could be used with PySpark and the tools on AWS. This was achieved by reading the file into a pandas DataFrame with the command
 
 ```df = pandas.read_sas('<filename>.XPT')```
 
@@ -44,7 +44,7 @@ Using the columns identified above, we then narrowed the data down to run the an
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/Initial_Data_Set.png)
 
-Since the data was collected through a survey, the responses were written in a numeric code so that the survey responses could be quickly recorded. To transform the data, we converted the Pyspark DataFrames into pandas DataFrames, then used the rubric provided in https://www.cdc.gov/brfss/annual_data/2021/pdf/2021-calculated-variables-version4-508.pdf and a combination of ```df =df.replace``` and ```df = np.where(df["<COULUMN>"].between(<RANGE>), "<REPLACEMENT-VALUE>", df["<COLUMN>"])``` to get the responses to the appropriate value or into its corresponding bucket.
+Since the data was collected through a survey, the responses were written in a numeric code so that the survey responses could be quickly recorded. To transform the data, we converted the Pyspark DataFrames into pandas DataFrames, then used the rubric provided in https://www.cdc.gov/brfss/annual_data/2021/pdf/2021-calculated-variables-version4-508.pdf and a combination of ```df =df.replace``` and ```df = np.where(df["<COLUMN>"].between(<RANGE>), "<REPLACEMENT-VALUE>", df["<COLUMN>"])``` to get the responses to the appropriate value or into its corresponding bucket.
 
 Respondents were also allowed to refuse to answer or respond that they could not recall, both responses which were recorded as null and then converted in NAs responses using ```df=df.mask(pandas_df == "")```. Once the data was converted accordingly, all NA values were dropped using ```df=df.drop(na)```
 
@@ -83,7 +83,7 @@ The next step in exploring our data was to run our machine learning model. To pr
 Now our data is ready for machine learning. 
 
 #### Random Forest 
-Our original goal was to perform a Random Forest Classifier so we could produce the factors of diabetes and rank these factors by importance. Below were the steps taken to run the machine learning model. We fit the model with random forest classifier, made predictions with the testing data and evaluated the results. 
+Our original goal was to perform a Random Forest Classifier so we could produce the factors of diabetes and rank these factors by importance. Below were the steps taken to run the machine learning model. We fit the model with the random forest classifier, made predictions with the testing data and evaluated the results. 
 
 Our accuracy score came out at 83%. 
 
@@ -134,12 +134,10 @@ Logistic Regression was done on the data. Below are the results related to our a
 
 Although our confusion matrix looked slightly stronger, our accuracy was lower, our coefficient numbers were almost identical and the p-values were still showing that BMI was the only factor with a p-value of 0. 
 
-Random Forest was done again with the under sampled data to see if this would change our importance features, which it did not. Using the under sampled date with our random forest also provided our lowest accuracy score. 
+Random Forest was done again with the under sampled data to see if this would change our importance features, which it did not. Using the undersampled date with our random forest also provided our lowest accuracy score. 
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/rf_undersample_cm.png)
 
 ## Data Analysis 
 
 After running numerous different machine learning models and different methods with the models, it was evident our data was telling us that BMI is the strongest indicator of BMI. 
-
-
