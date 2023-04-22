@@ -28,7 +28,7 @@ Below are a list of questions we hope to answer through our analysis. By answeri
 ## Data Exploration 
 
 ### Data Extraction
-The first challenge with teh data was converting it from the file type .xpt into .csv so it could be used with PySpark and the tools on AWS. This was ahcieved by reading the file into a pandas DataFrame with the command
+The first challenge with the data was converting it from the file type .xpt into .csv so it could be used with PySpark and the tools on AWS. This was ahceived by reading the file into a pandas DataFrame with the command
 
 ```df = pandas.read_sas('<filename>.XPT')```
 
@@ -44,9 +44,9 @@ Using the columns identified above, we then narrowed the data down to run the an
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/Initial_Data_Set.png)
 
-Since the data was collected through a survey, the responses were written in a numeric code so that the survey responses could be quickly recorded. To transform the data, we converted the Pyspark DataFrames into pandas DataFrames, then used the rubric provided in https://www.cdc.gov/brfss/annual_data/2021/pdf/2021-calculated-variables-version4-508.pdf and a combination of ```df =df.replace``` and ```df = np.where(df["<COULUMN>"].between(<RANGE>), "<REPLACEMENT-VALUE>", df["<COLUMN>"])``` to get the respsones to the appropriate value or into its corresponding bucket.
+Since the data was collected through a survey, the responses were written in a numeric code so that the survey responses could be quickly recorded. To transform the data, we converted the Pyspark DataFrames into pandas DataFrames, then used the rubric provided in https://www.cdc.gov/brfss/annual_data/2021/pdf/2021-calculated-variables-version4-508.pdf and a combination of ```df =df.replace``` and ```df = np.where(df["<COULUMN>"].between(<RANGE>), "<REPLACEMENT-VALUE>", df["<COLUMN>"])``` to get the responses to the appropriate value or into its corresponding bucket.
 
-Respondants were also allowed to refuse to answer or respond that they could not recall, both responses which were recored as null and then converted in NAs responses using ```df=df.mask(pandas_df == "")```. Once the data was converted accordingly, all NA values were dropped using ```df=df.drop(na)```
+Respondents were also allowed to refuse to answer or respond that they could not recall, both responses which were recorded as null and then converted in NAs responses using ```df=df.mask(pandas_df == "")```. Once the data was converted accordingly, all NA values were dropped using ```df=df.drop(na)```
 
 We next looked for outliers in the BMI starting with getting the summary statistics for BMI which provided the following:
 
@@ -59,12 +59,12 @@ Rerunning the summary statistics showed about 8,000 outliers removed and provide
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/BMI_post_outliers.png)
 
-We next separated out the key indicators for our visulaization into a spearate table, which was informed by the machine learning that will be reivewed below. Inour last step, we renamed the columns to be more user friendly.
+We next separated out the key indicators for our visualization into a separate table, which was informed by the machine learning that will be reviewed below. In our last step, we renamed the columns to be more user friendly.
 
 ### Data Loading
-To load our data, we created a server in PostGres connected to an Amazon Relational Database with the followng schema for our machine learning data and our visualization data
+To load our data, we created a server in PostGres connected to an Amazon Relational Database with the following schema for our machine learning data and our visualization data
 
-![image](https://user-images.githubusercontent.com/117782103/233792933-f24e51d0-3e0a-4037-8671-ff0d98343c4f.png)
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/diabetes_schema.png)
 
 Then in our google collab, we converted the data for our machine learning and our visualization data back into Pyspark DataFrames and used the following to load the data:
 
@@ -93,7 +93,7 @@ Below is our confusion matrix and classification report.
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/rf_cm_classification.png)
 
-Laslty we ran our feature importantce and sorted them. 
+Lastly we ran our feature importance and sorted them. 
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/rf_features.png)
 
@@ -101,20 +101,45 @@ With BMI coming in significantly higher than the other features, we ran machine 
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/BMI_only_accuracy.png)
 
-The last thing we did with the random forest classifier is to go back into our one hot encoder and add drop 'first' to decrease the number of features in our dataset to see if that chnaged the outcome of our factors. When doing this, our accuracy score went up slightly to 83.4%. Below is our confusion matrix and classification report. 
+The last thing we did with the random forest classifier is to go back into our one hot encoder and add drop 'first' to decrease the number of features in our dataset to see if that changed the outcome of our factors. When doing this, our accuracy score went up slightly to 83.4%. Below is our confusion matrix and classification report. 
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/drop_first_classification.png)
 
-We ran our feature importance again with BMI still coming out signficantly higher. 
+We ran our feature importance again with BMI still coming out significantly higher. 
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/drop_first_features.png)
 
 
 #### Logistic Regression 
+A challenge we kept experiencing is we were not happy with our results that we were not easily able to distinguish what other factors cause a diabetes diagnosis. We decided to try another machine learning model - Logistic Regression - to see if this would change anything by looking at coefficients and the p-value. 
 
+When fitting our data with the logistic regression model, we did receive a higher accuracy score of 86%. Below is our confusion matrix and classification report. 
 
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/log_reg_cm.png)
+
+We then found our coefficients and sorted them from lowest to highest. The coefficients with the highest level are shown at the bottom. As predicted, BMI had the highest coefficient. 
+
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/coefficients.png)
+
+Lastly, using the statsmodels.api we printed out results summaries that gave us the p-values. The only p-value that showed a significant importance in predicting diabetes was BMI. 
+
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/p_values.png)
+
+#### Under Sampling 
+The last machine learning model we ran was to perform random under sampling. The count of those in our dataset who did not have diabetes was 155,232 versus 26,869 who had diabetes. By under sampling, we would decrease the size of the majority class down to 26,869 to see if this would change our outcomes. 
+
+Logistic Regression was done on the data. Below are the results related to our accuracy score, confusion matrix and classification summary. 
+
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/lr_undersample_cm.png)
+
+Although our confusion matrix looked slightly stronger, our accuracy was lower, our coefficient numbers were almost identical and the p-values were still showing that BMI was the only factor with a p-value of 0. 
+
+Random Forest was done again with the under sampled data to see if this would change our importance features, which it did not. Using the under sampled date with our random forest also provided our lowest accuracy score. 
+
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/rf_undersample_cm.png)
 
 ## Data Analysis 
 
+After running numerous different machine learning models and different methods with the models, it was evident our data was telling us that BMI is the strongest indicator of BMI. 
 
 
