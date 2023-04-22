@@ -55,8 +55,20 @@ The next step in exploring our data was to run our machine learning model. To pr
 
 Now our data is ready for machine learning. 
 
-#### RandomForest 
+#### Random Forest 
 Our original goal was to perform a Random Forest Classifier so we could produce the factors of diabetes and rank these factors by importance. Below were the steps taken to run the machine learning model. We fit the model with random forest classifier, made predictions with the testing data and evaluated the results. 
+
+Our accuracy score came out at 83%. 
+![image](https://user-images.githubusercontent.com/117782103/233793573-4dce1634-93f8-474f-b5c6-054ef1cb2358.png)
+
+Below is our confusion matrix and classification report. 
+![image](https://user-images.githubusercontent.com/117782103/233793608-9ab5e10e-7d4e-487a-8c06-14700c7001b7.png)
+
+Laslty we ran our feature importantce and sorted them. 
+![image](https://user-images.githubusercontent.com/117782103/233793684-67d98e91-af2c-4f52-b29f-a371a8dd31f8.png)
+
+With BMI coming in significantly higher than the other features, we ran machine learning logistic regression on only BMI. The accuracy came out the same. 
+![image](https://user-images.githubusercontent.com/117782103/233793949-0d01cfc0-8a16-4767-9a6d-5fba3dac4c96.png)
 
 
 
