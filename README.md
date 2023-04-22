@@ -37,7 +37,7 @@ Lastly, we renamed our columns to better identify the data.
 ### Upload and Store Data 
 Using SQL, we created our diabetes schema to determine what tables / dataframes we wanted. 
 
-image.png
+![image](https://user-images.githubusercontent.com/117782103/233792933-f24e51d0-3e0a-4037-8671-ff0d98343c4f.png)
 
 From this we created two dataframes - one with all columns and one with the columns that we wanted to visualize. Our results of our machine learning will determine what columns we want in our visualization dataframe. Both dataframes were converted to pyspark and loaded into AWS. 
 
