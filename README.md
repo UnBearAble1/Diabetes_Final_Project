@@ -18,12 +18,18 @@ The BRFSS dataset has over 300 columns to choose from. We researched the risk fa
 The data columns we chose are related to having been told you have diabetes, race, high cholesterol, high blood pressure, BMI, smoking and alcohol habits, education, general health, age, exercise, healthy eating styles, income, gender and if the cost of healthcare has prohibited you from seeing a doctor. 
 
 ## Questions to Answer 
-Below are a list of questions we hope to answer through our analysis. By answering these questions we can better prepare individuals and the healthcare field for this disease. Early detection of diabetes is key especially with the alarming rate of those who have diabetes or pre-diabetes and do not know it. Since there is no cure currently, the earlier it is detected the earlier lifestyle changes can be made. 
+Below are a list of initial questions we had hoped to answer through our analysis. By answering these questions we can better prepare individuals and the healthcare field for this disease. Early detection of diabetes is key especially with the alarming rate of those who have diabetes or pre-diabetes and do not know it. Since there is no cure currently, the earlier it is detected the earlier lifestyle changes can be made. 
 
 - What are the top risk factors of diabetes? 
 - Is prevalence of diabetes higher in certain geographical locations? 
 - Are risk factors the same for all ages?
 - Do males and females have the same risk factors? 
+
+After completing some data analysis, we switched our focus questions to the following: 
+- How accurately can we identify risk factors from the survey data?
+- Can our data support existing literature on known risk factors?
+- When should health professionals test for diabetes?
+- What choices can individuals make to reduce the risk of diabetes?
 
 ## Data Exploration 
 
@@ -70,7 +76,8 @@ Then in our google collab, we converted the data for our machine learning and ou
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/PySpark%20Upload.png)
 
-### Machine Learning 
+## Data Analysis - Machine Learning
+
 The next step in exploring our data was to run our machine learning model. To prepare our data to run through the machine learning model, the following steps were taken: 
 - Load dataframe and determine types of each column 
 - Create a list of those columns that are categorical 
@@ -82,7 +89,7 @@ The next step in exploring our data was to run our machine learning model. To pr
 
 Now our data is ready for machine learning. 
 
-#### Random Forest 
+### Random Forest 
 Our original goal was to perform a Random Forest Classifier so we could produce the factors of diabetes and rank these factors by importance. Below were the steps taken to run the machine learning model. We fit the model with the random forest classifier, made predictions with the testing data and evaluated the results. 
 
 Our accuracy score came out at 83%. 
@@ -110,7 +117,7 @@ We ran our feature importance again with BMI still coming out significantly high
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/drop_first_features.png)
 
 
-#### Logistic Regression 
+### Logistic Regression 
 A challenge we kept experiencing is we were not happy with our results that we were not easily able to distinguish what other factors cause a diabetes diagnosis. We decided to try another machine learning model - Logistic Regression - to see if this would change anything by looking at coefficients and the p-value. 
 
 When fitting our data with the logistic regression model, we did receive a higher accuracy score of 86%. Below is our confusion matrix and classification report. 
@@ -125,7 +132,7 @@ Lastly, using the statsmodels.api we printed out results summaries that gave us 
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/p_values.png)
 
-#### Under Sampling 
+### Under Sampling 
 The last machine learning model we ran was to perform random under sampling. The count of those in our dataset who did not have diabetes was 155,232 versus 26,869 who had diabetes. By under sampling, we would decrease the size of the majority class down to 26,869 to see if this would change our outcomes. 
 
 Logistic Regression was done on the data. Below are the results related to our accuracy score, confusion matrix and classification summary. 
@@ -138,6 +145,16 @@ Random Forest was done again with the under sampled data to see if this would ch
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/rf_undersample_cm.png)
 
-## Data Analysis 
+## Results of Analysis 
 
 After running numerous different machine learning models and different methods with the models, it was evident our data was telling us that BMI is the strongest indicator of BMI. 
+
+## Recommendations for Future Analysis 
+- include anything the team would have done differently 
+
+## Links 
+Link to Google Slides presentation: https://docs.google.com/presentation/d/1o2SbNh6iCMTK1tSFhFL0OyjroELRP71bkXi4tkQdL-M/edit#slide=id.g238c574ccc1_0_1018 
+
+Link to dashboard: 
+
+ 
