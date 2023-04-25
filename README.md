@@ -118,19 +118,23 @@ We ran our feature importance again with BMI still coming out significantly high
 
 
 ### Logistic Regression 
-A challenge we kept experiencing is we were not happy with our results that we were not easily able to distinguish what other factors cause a diabetes diagnosis. We decided to try another machine learning model - Logistic Regression - to see if this would change anything by looking at coefficients and the p-value. 
+A challenge we kept experiencing is we were not happy with our results that we were not easily able to distinguish what other factors cause a diabetes diagnosis. Literature on diabetes has told us that there are more factors than just BMI. We decided to try another machine learning model - Logistic Regression - to see if this would change anything by looking at coefficients and the p-value. When running our logistic regression we continued to use the drop-first in our one hot encoder to get accurate results. 
 
 When fitting our data with the logistic regression model, we did receive a higher accuracy score of 86%. Below is our confusion matrix and classification report. 
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/log_reg_cm.png)
 
-We then found our coefficients and sorted them from lowest to highest. The coefficients with the highest level are shown at the bottom. As predicted, BMI had the highest coefficient. 
+We then found our coefficients and sorted them from lowest to highest. The coefficients with the highest level are shown at the bottom. 
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/coefficients.png)
 
-Lastly, using the statsmodels.api we printed out results summaries that gave us the p-values. The only p-value that showed a significant importance in predicting diabetes was BMI. 
+Lastly, using the statsmodels.api we printed out the results summaries that gave us the p-values. This showed us that we had many factors that returned a 0, meaning that there is statistical evidence that the factor is not random chance and it does affect having diabetes. 
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/p_values.png)
+
+Due to having a large amount of factors that had p-values at 0 or close to 0, we decided to look at the z score. The higher the z score, the more likely the factor is realted to an individual having diabetes. Our top z values are shown below. 
+
+![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/top_z_values.png)
 
 ### Under Sampling 
 The last machine learning model we ran was to perform random under sampling. The count of those in our dataset who did not have diabetes was 155,232 versus 26,869 who had diabetes. By under sampling, we would decrease the size of the majority class down to 26,869 to see if this would change our outcomes. 
@@ -139,7 +143,7 @@ Logistic Regression was done on the data. Below are the results related to our a
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/lr_undersample_cm.png)
 
-Although our confusion matrix looked slightly stronger, our accuracy was lower, our coefficient numbers were almost identical and the p-values were still showing that BMI was the only factor with a p-value of 0. 
+Although our confusion matrix looked slightly stronger, our accuracy was lower. Our coefficient numbers were almost identical as well as the p-values and z-values. 
 
 Random Forest was done again with the under sampled data to see if this would change our importance features, which it did not. Using the undersampled date with our random forest also provided our lowest accuracy score. 
 
@@ -147,7 +151,9 @@ Random Forest was done again with the under sampled data to see if this would ch
 
 ## Results of Analysis 
 
-After running numerous different machine learning models and different methods with the models, it was evident our data was telling us that BMI is the strongest indicator of BMI. 
+After running numerous different machine learning models and different methods with the models we found that our best model to use was Logistic Regression with our p-values and z-scores. It was also necessary to drop the first categorical value in the one hot encoder. We did not have accurate results and resulted many nans in our summary when we did not use the drop first. 
+
+Our next step was to choose which factors we wanted to visualize and which ones had the most impact on having diabetes. Looking at our highest z-scores, we chose to look at high blood pressure, BMI, high cholesterol and the question where individuals were asked to rate theirthe quality of their health. Additionally, we chose to also visualize age and income. 
 
 ## Recommendations for Future Analysis 
 - include anything the team would have done differently 
