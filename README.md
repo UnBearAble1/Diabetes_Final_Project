@@ -153,7 +153,7 @@ Random Forest was done again with the under sampled data to see if this would ch
 
 After running numerous different machine learning models and different methods with the models we found that our best model to use was Logistic Regression with our p-values and z-scores. It was also necessary to drop the first categorical value in the one hot encoder. We did not have accurate results and resulted many nans in our summary when we did not use the drop first. 
 
-Our next step was to choose which factors we wanted to visualize and which ones had the most impact on having diabetes. Looking at our highest z-scores, we chose to look at high blood pressure, BMI, high cholesterol and the question where individuals were asked to rate theirthe quality of their health. Additionally, we chose to also visualize age and income. 
+Our next step was to choose which factors we wanted to visualize and which ones had the most impact on having diabetes. Looking at our highest z-scores, we chose to look at high blood pressure, BMI, high cholesterol and the question where individuals were asked to rate the quality of their health. Additionally, we chose to also vizualize age, income, and gender. 
 
 ## Recommendations for Future Analysis 
 - include anything the team would have done differently 
@@ -161,6 +161,6 @@ Our next step was to choose which factors we wanted to visualize and which ones 
 ## Links 
 Link to Google Slides presentation: https://docs.google.com/presentation/d/1o2SbNh6iCMTK1tSFhFL0OyjroELRP71bkXi4tkQdL-M/edit#slide=id.g238c574ccc1_0_1018 
 
-Link to dashboard: https://public.tableau.com/app/profile/will.b7668/viz/Diabetes_Final_Project/Dashboard1?publish=yes
+Link to visualization dashboard: https://public.tableau.com/app/profile/will.b7668/viz/Diabetes_Final_Project/Dashboard1?publish=yes
 
  
