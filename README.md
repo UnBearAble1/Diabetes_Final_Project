@@ -161,6 +161,6 @@ Our next step was to choose which factors we wanted to visualize and which ones 
 ## Links 
 Link to Google Slides presentation: https://docs.google.com/presentation/d/1o2SbNh6iCMTK1tSFhFL0OyjroELRP71bkXi4tkQdL-M/edit#slide=id.g238c574ccc1_0_1018 
 
-Link to dashboard: 
+Link to dashboard: https://public.tableau.com/app/profile/will.b7668/viz/Diabetes_Final_Project/Dashboard1?publish=yes
 
  
