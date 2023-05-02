@@ -156,7 +156,9 @@ After running numerous different machine learning models and different methods w
 Our next step was to choose which factors we wanted to visualize and which ones had the most impact on having diabetes. Looking at our highest z-scores, we chose to look at high blood pressure, BMI, high cholesterol and the question where individuals were asked to rate the quality of their health. Additionally, we chose to also vizualize age, income, and gender. 
 
 ## Recommendations for Future Analysis 
-- include anything the team would have done differently 
+- Find data source with more pertinent information (A1C, Skin thickness, etc)
+- Use outcomes to identify at risk areas in the US
+- Use previous years surveys to find trends in the data
 
 ## Links 
 Link to Google Slides presentation: https://docs.google.com/presentation/d/1o2SbNh6iCMTK1tSFhFL0OyjroELRP71bkXi4tkQdL-M/edit#slide=id.g238c574ccc1_0_1018 
