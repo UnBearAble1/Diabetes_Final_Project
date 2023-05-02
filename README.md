@@ -132,7 +132,7 @@ Lastly, using the statsmodels.api we printed out the results summaries that gave
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/p_values.png)
 
-Due to having a large amount of factors that had p-values at 0 or close to 0, we decided to look at the z score. The higher the z score, the more likely the factor is realted to an individual having diabetes. Our top z values are shown below. 
+Due to having a large amount of factors that had p-values at 0 or close to 0, we decided to look at the z score. The higher the z score, the more likely the factor is related to an individual having diabetes. Our top z values are shown below. 
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/top_z_values.png)
 
