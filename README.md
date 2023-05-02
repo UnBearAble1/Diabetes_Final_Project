@@ -82,7 +82,7 @@ The next step in exploring our data was to run our machine learning model. To pr
 - Load dataframe and determine types of each column 
 - Create a list of those columns that are categorical 
 - Create a one hot encoder instance and fit and transform the data of the categorical columns
-- Merge the dataframe of the one hot encoded features and drop the originals 
+- Merge the data frame of the one hot encoded features and drop the originals 
 - Define our target (diabetes) and our features (all other columns)
 - Split into training and testing datasets 
 - Fit and scale the data 
@@ -145,15 +145,15 @@ Logistic Regression was done on the data. Below are the results related to our a
 
 Although our confusion matrix looked slightly stronger, our accuracy was lower. Our coefficient numbers were almost identical as well as the p-values and z-values. 
 
-Random Forest was done again with the under sampled data to see if this would change our importance features, which it did not. Using the undersampled date with our random forest also provided our lowest accuracy score. 
+Random Forest was done again with the under sampled data to see if this would change our important features, which it did not. Using the undersampled date with our random forest also provided our lowest accuracy score. 
 
 ![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/rf_undersample_cm.png)
 
 ## Results of Analysis 
 
-After running numerous different machine learning models and different methods with the models we found that our best model to use was Logistic Regression with our p-values and z-scores. It was also necessary to drop the first categorical value in the one hot encoder. We did not have accurate results and resulted many nans in our summary when we did not use the drop first. 
+After running numerous different machine learning models and different methods with the models we found that our best model to use was Logistic Regression with our p-values and z-scores. It was also necessary to drop the first categorical value in the one hot encoder. We did not have accurate results and resulted in many nans in our summary when we did not use the drop first. 
 
-Our next step was to choose which factors we wanted to visualize and which ones had the most impact on having diabetes. Looking at our highest z-scores, we chose to look at high blood pressure, BMI, high cholesterol and the question where individuals were asked to rate the quality of their health. Additionally, we chose to also vizualize age, income, and gender. 
+Our next step was to choose which factors we wanted to visualize and which ones had the most impact on having diabetes. Looking at our highest z-scores, we chose to look at high blood pressure, BMI, high cholesterol and the question where individuals were asked to rate the quality of their health. Additionally, we chose to also visualize age, income, and gender. 
 
 ### Questions Answered
 
@@ -180,5 +180,3 @@ What choices can individuals make to reduce the risk of diabetes?
 Link to Google Slides presentation: https://docs.google.com/presentation/d/1o2SbNh6iCMTK1tSFhFL0OyjroELRP71bkXi4tkQdL-M/edit#slide=id.g238c574ccc1_0_1018 
 
 Link to visualization dashboard: https://public.tableau.com/app/profile/will.b7668/viz/Diabetes_Final_Project/Dashboard1?publish=yes
-
- 
