@@ -155,6 +155,22 @@ After running numerous different machine learning models and different methods w
 
 Our next step was to choose which factors we wanted to visualize and which ones had the most impact on having diabetes. Looking at our highest z-scores, we chose to look at high blood pressure, BMI, high cholesterol and the question where individuals were asked to rate the quality of their health. Additionally, we chose to also vizualize age, income, and gender. 
 
+### Questions Answered
+
+How accurately can we identify risk factors from the survey data?
+- We discovered several key factors supported by our visualizations that can be found in our dashboard below.  
+
+Does our data support existing research on known risk factors?
+- Yes. Ex: High Blood Pressure and High Cholesterol
+
+When should health professionals test for diabetes?
+- With High BMI, High Cholesterol, High Blood Pressure, General Health and Age
+
+What choices can individuals make to reduce the risk of diabetes?
+- Improved General Health Choices
+- BMI is strongly linked so can work with Primary Care Provider for options to adjust as needed
+- Monitor other risk factors, work with PCP as needed.
+
 ## Recommendations for Future Analysis 
 - Find data source with more pertinent information (A1C, Skin thickness, etc)
 - Use outcomes to identify at risk areas in the US
