@@ -70,7 +70,7 @@ We next separated out the key indicators for our visualization into a separate t
 ### Data Loading
 To load our data, we created a server in PostGres connected to an Amazon Relational Database with the following schema for our machine learning data and our visualization data
 
-![image](https://github.com/UnBearAble1/Project_Placeholder/blob/main/Resources/diabetes_schema.png)
+![image](https://github.com/UnBearAble1/Diabetes_Final_Project/blob/main/Resources/Visualization_Table_Schema.png)
 
 Then in our google collab, we converted the data for our machine learning and our visualization data back into Pyspark DataFrames and used the following to load the data:
 
